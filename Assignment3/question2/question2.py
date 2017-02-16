@@ -8,7 +8,6 @@ import math
 n = input()
 A = [[0 for j in range(n+1)] for i in range(n)]
 y = [0 for j in range(n)]
-flag = 0
 
 def main():
 	for i in range (n):
@@ -39,30 +38,43 @@ def print_ans():
 		print ("x" + str(i+1) + " : " + str(float(y[i])))
 
 def calc_y(n):
+	flag = 0
 	print_aug()
 	for k in range(n-1):
 		count = 0
+		col = k
 		# count_b = 0
 		pivot = k
 		for j in range(k,n):
 			if(A[j][k] == 0):
 				count += 1
-			if(A[j][n] == 0):
-				count_b += 1
 			if(math.fabs(A[j][k]) > math.fabs(A[pivot][k])):
 				pivot = j
 		if count == n-k:
-			continue;
+			while(1):
+				pivot = k
+				count = 0
+				for j in range(k,n):
+					if(A[j][col] == 0):
+						count += 1
+					if(math.fabs(A[j][k]) > math.fabs(A[pivot][k])):
+						pivot = j
+				if(count == n-k):
+					if(col < n-1):
+						col += 1
+						break
+					else:
+						break
 			# if count_b == n-k :
 			# 	print("Infinitely many Solutions Exist !!")
 			# else:
 			# 	print("No Solution !!")
 			# exit()
-		else :
+		if col < n-1 :
 			swap_row(pivot,k)
 			for j in range(k+1,n):
-				mf = Fraction(A[j][k]/A[k][k])
-				for t in range(k,n+1):
+				mf = Fraction(A[j][col]/A[k][col])
+				for t in range(col,n+1):
 					A[j][t] = Fraction(Fraction(A[j][t]) - Fraction(mf* A[k][t]))
 		print("Augmented Matrix after " +str(k+1)+ " Pass : \n ")
 		print_aug()
@@ -79,8 +91,8 @@ def calc_y(n):
 		count_b = 0
 		for j in range(n):
 			if(A[i][j] == 0):
-				count += 1
-		if(count == n-1):
+				count_b += 1
+		if(count_b == n):
 			flag = 1
 			if(A[n-1][n] != 0):
 				print("No Solution !!")
