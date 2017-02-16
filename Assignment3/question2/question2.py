@@ -4,14 +4,12 @@ import numpy as np
 import sympy as sp
 import math
 
-# n = input("Enter the number of equations in the system : ")
 n = input()
 A = [[0 for j in range(n+1)] for i in range(n)]
 y = [0 for j in range(n)]
 
 def main():
 	for i in range (n):
-		# print("Equation number " + str(i+1) + " : ")
 		temp = raw_input()
 		temp = temp.split(" ")
 		for j in range(n+1):
@@ -29,7 +27,6 @@ def print_aug():
 	for i in range(n):
 		for j in range(n+1):
 			print ("%10.5f" %float(A[i][j]), end = " ")
-			#print(float(A[i][j]), end = " ")
 		print()
 	print()
 
@@ -43,7 +40,6 @@ def calc_y(n):
 	for k in range(n-1):
 		count = 0
 		col = k
-		# count_b = 0
 		pivot = k
 		for j in range(k,n):
 			if(A[j][k] == 0):
@@ -60,17 +56,16 @@ def calc_y(n):
 					if(math.fabs(A[j][k]) > math.fabs(A[pivot][k])):
 						pivot = j
 				if(count == n-k):
-					if(col < n-1):
+					if(col < n):
 						col += 1
-						break
+						print(col)
+						continue
 					else:
 						break
-			# if count_b == n-k :
-			# 	print("Infinitely many Solutions Exist !!")
-			# else:
-			# 	print("No Solution !!")
-			# exit()
-		if col < n-1 :
+				else:
+					print(col)
+					break
+		if col < n :
 			swap_row(pivot,k)
 			for j in range(k+1,n):
 				mf = Fraction(A[j][col]/A[k][col])
