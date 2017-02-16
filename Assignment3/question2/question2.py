@@ -8,6 +8,7 @@ import math
 n = input()
 A = [[0 for j in range(n+1)] for i in range(n)]
 y = [0 for j in range(n)]
+flag = 0
 
 def main():
 	for i in range (n):
@@ -41,7 +42,7 @@ def calc_y(n):
 	print_aug()
 	for k in range(n-1):
 		count = 0
-		count_b = 0
+		# count_b = 0
 		pivot = k
 		for j in range(k,n):
 			if(A[j][k] == 0):
@@ -51,11 +52,12 @@ def calc_y(n):
 			if(math.fabs(A[j][k]) > math.fabs(A[pivot][k])):
 				pivot = j
 		if count == n-k:
-			if count_b == n-k :
-				print("Infinitely many Solutions Exist !!")
-			else:
-				print("No Solution !!")
-			exit()
+			continue;
+			# if count_b == n-k :
+			# 	print("Infinitely many Solutions Exist !!")
+			# else:
+			# 	print("No Solution !!")
+			# exit()
 		else :
 			swap_row(pivot,k)
 			for j in range(k+1,n):
@@ -72,6 +74,22 @@ def calc_y(n):
 	if A[n-1][n-1] == 0 :
 		print("Infinitely many Solutions Exist !!")
 		exit()
+
+	for i in range(n):
+		count_b = 0
+		for j in range(n):
+			if(A[i][j] == 0):
+				count += 1
+		if(count == n-1):
+			flag = 1
+			if(A[n-1][n] != 0):
+				print("No Solution !!")
+				exit()
+
+	if(flag == 1):
+		print("Infinitely many Solutions Exist !!")
+		exit()
+
 	y[n-1] = Fraction(A[n-1][n]/A[n-1][n-1])
 	for i in range(n-2,-1,-1):
 		back_subs = 0
