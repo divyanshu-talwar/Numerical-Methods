@@ -36,3 +36,6 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Ignore compiled files
+*.pyc
