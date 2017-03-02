@@ -38,4 +38,4 @@
 *.su
 
 # Ignore compiled files
-*.pyc
+*.pyc	
