@@ -2,7 +2,7 @@
 ## About
 * This assignment strengthens our theoritical understanding of `Fixed Point Iteration`, `Newton's Method ` and `Secant Method`.
 * There are three folders answer1, answer2 and answer3 , each containing the respective `C program` for the questions given in the assignment.
-* Contributor - Divyanshu Talwar (2015028)
+
 
 ## Installation and Execution
 * Type `cd answer1` on the console to move into the respective directory (replace answer1 with answer2 or answer3 to go into others). 

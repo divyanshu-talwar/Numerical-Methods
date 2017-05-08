@@ -2,7 +2,6 @@
 ## About
 * This assignment strengthens our theoritical understanding of `LU Factorisation` and `Gauss Jordan`.
 * There are 2 folders named `lu_factorisation`, `gauss_jordan` each containing the python scripts and required test files.
-* Contributor - Divyanshu Talwar (2015028)
 
 ## Installation and Execution
 * Move into the respective directory using the command `cd <directory_name>`
